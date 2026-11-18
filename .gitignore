@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Large preview exports: regenerate with models/race_display.py
+out/preview/
+out/stl/
+
+# Local Claude Code session files
+.claude/settings.local.json

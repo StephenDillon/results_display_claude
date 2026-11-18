@@ -1,0 +1,57 @@
+# Race results wall display: input data and parameters.
+# Edit this file, then run:  .venv/Scripts/python.exe models/race_display.py
+
+title: MARATHON
+
+colors:                 # display colors only; real color = the filament you pick in Bambu Studio
+  background: "#111111"
+  text: "#FFFFFF"
+
+fonts:                  # any .ttf works; mono font keeps year/time digits aligned
+  mono: C:/Windows/Fonts/consolab.ttf     # Consolas Bold
+  sans: C:/Windows/Fonts/segoeuib.ttf     # Segoe UI Bold
+
+# Sorted oldest -> newest; add new races at the bottom.
+results:
+  - { year: 2008, city: Dublin,      time: "3:41:19" }
+  - { year: 2009, city: Cork,        time: "3:29:57" }
+  - { year: 2009, city: NYC,         time: "3:41:50" }
+  - { year: 2010, city: Cork,        time: "3:33:16" }
+  - { year: 2010, city: Dublin,      time: "4:12:57" }
+  - { year: 2024, city: Charlotte,   time: "4:51:14" }
+  - { year: 2026, city: Rome,        time: "4:10:39" }
+  - { year: 2026, city: Marine Corp, time: "5:01:42" }
+  - { year: 2026, city: Charlotte,   time: "4:29:29" }
+
+dims:                   # mm
+  tile_width: 250       # Bambu P2S plate is 256 x 256
+  header_height: 40
+  tile_height: 24
+  endcap_height: 8
+  tile_thickness: 8
+  text_relief: 0.8
+  title_cap_height: 16
+  row_cap_height: 9
+  side_margin: 8
+  year_city_gap: 6
+  face_chamfer: 0.4
+
+joint:                  # rear-insert dovetail, hidden behind a front skin
+  count: 3
+  neck_width: 10
+  head_width: 16
+  depth: 6
+  front_skin: 2
+  clearance: 0.15       # per side; confirmed by coupon test print
+
+keyholes:
+  spacing: 200
+  center_height: 18     # entry-hole center, from header bottom edge
+  entry_diameter: 9
+  slot_width: 4.5
+  slot_travel: 8
+  ledge: 2.5            # plastic between wall and screw head
+  head_space: 3.0       # cavity depth for the screw head
+
+plate:
+  prime_tower_reserve: 60   # mm kept free at the top of each 256 mm plate for the AMS prime tower

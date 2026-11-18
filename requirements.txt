@@ -1,0 +1,5 @@
+build123d==0.13.0
+pyyaml==6.0.3
+# Pinned older builds: on Windows with Smart App Control, the newest numpy DLLs can be blocked.
+numpy==2.2.6
+scipy==1.15.3
