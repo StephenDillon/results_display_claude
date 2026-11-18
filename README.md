@@ -21,11 +21,19 @@ A modular, 3D-printable wall display for your race results. A header tile shows 
 
 The model is fully parametric Python using [build123d](https://github.com/gumyr/build123d). It was made with [text-to-cad](https://github.com/earthtojake/text-to-cad) and Claude Code. See [specs.md](specs.md) for the full design spec.
 
-The example data in [results.yaml](results.yaml) is my own marathon history. Replace it with yours.
+The example data in [results.yaml](results.yaml) is my own marathon history. Replace it with yours. Ready-to-print example files are attached to the [latest release](https://github.com/StephenDillon/results_display_claude/releases/latest).
 
 ---
 
-## Make your own
+## Make your own with Claude (or another AI agent)
+
+If you'd rather not run things by hand, open this repo in [Claude Code](https://claude.com/claude-code) (or any agent that reads `AGENTS.md`) and say something like:
+
+> Make me a display with my marathon results: 2019 Berlin 3:41:07, 2023 Chicago 3:29:15. I'm on a Mac with a Bambu A1.
+
+[AGENTS.md](AGENTS.md) tells the agent what to do. It asks for anything missing, sets up Python, picks fonts for your OS, adapts to your printer, builds the files, and tells you what to print.
+
+## Make your own by hand
 
 ### 1. Install
 
@@ -97,7 +105,8 @@ The 3MFs take their printer, process and filament settings from [templates/bambu
 To use your own printer and filaments:
 1. Open any project in Bambu Studio and pick your printer, plate, process and two filaments. The body uses **filament 1** and the text uses **filament 2**.
 2. **File → Save Project As…** and save over `templates/bambu_p2s_template.3mf`.
-3. Rebuild. Only the settings are taken from the file. Its models and thumbnails are ignored.
+3. Run `python models/strip_template.py` (using your venv's Python). It strips the saved project down to just its settings, which removes your Bambu account ID, models and thumbnails. Do this before you commit the file anywhere.
+4. Rebuild.
 
 On a printer with a smaller bed, also lower `tile_width` in `results.yaml` (e.g. 175 for a 180 mm bed). If you delete the template, the build writes plain 3MFs instead, which any slicer can open.
 
@@ -145,6 +154,9 @@ Every dimension is in [results.yaml](results.yaml):
 |---|---|
 | `models/race_display.py` | The parametric model and the export step |
 | `models/bambu3mf.py` | Writes Bambu Studio project 3MFs using the settings template |
+| `models/strip_template.py` | Strips a saved Bambu project down to settings only |
+| `AGENTS.md` / `CLAUDE.md` | Instructions for AI agents building a display for you |
+| `out/` | Build output. It isn't committed; regenerate it, or download the examples from Releases |
 | `results.yaml` | Your data and all parameters |
 | `specs.md` | Design spec (layout, joint, mounting, printing) |
 | `mockups.html` | The early 2D mockups. The joint drawings show the older v0.2 design |

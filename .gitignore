@@ -1,10 +1,17 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
 
-# Large preview exports: regenerate with models/race_display.py
-out/preview/
-out/stl/
+# Build outputs: regenerate with models/race_display.py
+# (example print files are attached to GitHub Releases instead)
+out/
 
-# Local Claude Code session files
-.claude/settings.local.json
+# Local tool / editor config
+.claude/
+.vscode/
+.idea/
+
+# OS clutter
+.DS_Store
+Thumbs.db
